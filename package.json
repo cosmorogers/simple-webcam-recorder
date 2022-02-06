@@ -1,0 +1,17 @@
+{
+  "name": "simple-webcam-recorder",
+  "version": "1.0.0",
+  "description": "Simple Webcam Recorder",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "serve": "http-server ./"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^14.1.0"
+  }
+}
