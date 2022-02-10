@@ -54,8 +54,9 @@ function doDownload() {
     let filename = 'unknown.webm'
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
+    const bibNumber = urlParams.get('bib').padStart(3, '0');
     if (urlParams.has('bib')) {
-        filename = 'video-' + urlParams.get('bib') + '.webm';
+        filename = 'video-' + bibNumber + '.webm';
     }
 
     const blob = new Blob(recordedBlobs, {type: 'video/webm'});
