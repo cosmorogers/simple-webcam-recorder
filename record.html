@@ -22,6 +22,27 @@
     <title>MediaStream Recording</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        div#timer::before {
+            border-radius: 10px;
+            background: red;
+            content: "";
+            display: block;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            left: 12px;
+            top: 15px;
+        }
+        #timer {
+            position: absolute;
+            margin-left: 9px;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 0.5em 1em 0.5em 2em;
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,6 +51,7 @@
     <div class="row" id="video-block">
         <div class="col text-center">
             <div class="collapse show" id="recorder">
+                <div id="timer"></div>
                 <video id="gum" playsinline autoplay muted width="1280" height="720"></video>
                 <button id="record" disabled type="button" class="btn btn-success btn-lg">Start Recording</button>
             </div>

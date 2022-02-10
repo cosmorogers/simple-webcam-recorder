@@ -13,6 +13,31 @@
 
 /* globals MediaRecorder */
 
+
+
+class Timer {
+    constructor(div) {
+        this.div = div;
+        this.duration = 0;
+        this.interval = null;
+    }
+    start() {
+        this.duration = 0;
+        this.div.style.display = 'block';
+        this.div.textContent = new Date(this.duration * 1000).toISOString().substr(14, 5);
+        this.interval = setInterval(this.increment.bind(this), 1000);
+    }
+    increment() {
+        this.duration++;
+        this.div.textContent = new Date(this.duration * 1000).toISOString().substr(14, 5);
+    }
+    stop() {
+        clearInterval(this.interval)
+        this.interval = null;
+    }
+}
+
+
 let mediaRecorder;
 let recordedBlobs;
 
@@ -21,6 +46,9 @@ const recorder = document.querySelector('#recorder');
 const recordingDone = document.querySelector('#recordingDone');
 const errorMsgElement = document.querySelector('span#errorMsg');
 const recordButton = document.querySelector('button#record');
+
+const timer = new Timer(document.querySelector('#timer'))
+
 recordButton.addEventListener('click', () => {
     if (recordButton.textContent === 'Start Recording') {
         startRecording();
@@ -80,6 +108,8 @@ function handleDataAvailable(event) {
 }
 
 function startRecording() {
+    timer.start()
+
     recordedBlobs = [];
     const mimeType = 'video/webm;codecs=vp8,opus';
     const options = {mimeType};
@@ -104,6 +134,7 @@ function startRecording() {
 }
 
 function stopRecording() {
+    timer.stop()
     mediaRecorder.stop();
 }
 
