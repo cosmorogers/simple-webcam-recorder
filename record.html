@@ -48,11 +48,13 @@
 <body>
 
 <div class="container">
-    <div class="row" id="video-block">
+    <div class="row mt-5" id="video-block">
         <div class="col text-center">
             <div class="collapse show" id="recorder">
                 <div id="timer"></div>
                 <video id="gum" playsinline autoplay muted width="1280" height="720"></video>
+                <p class="alert alert-warning text-center" id="time-warning" style="display: none">Please start to wrap up your video so the next Scout has time for theirs!</p>
+                <p class="alert alert-danger text-center" id="final-time-warning" style="display: none">You are about to run out of time, please hurry up!</p>
                 <button id="record" disabled type="button" class="btn btn-success btn-lg">Start Recording</button>
             </div>
 

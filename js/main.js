@@ -20,6 +20,9 @@ class Timer {
         this.div = div;
         this.duration = 0;
         this.interval = null;
+
+        this.warning = document.querySelector('#time-warning')
+        this.finalWarning = document.querySelector('#final-time-warning')
     }
     start() {
         this.duration = 0;
@@ -30,6 +33,13 @@ class Timer {
     increment() {
         this.duration++;
         this.div.textContent = new Date(this.duration * 1000).toISOString().substr(14, 5);
+
+        if (this.duration > 110) {
+            this.finalWarning.style.display = 'block';
+            this.warning.style.display = 'none';
+        } else if (this.duration > 90) {
+            this.warning.style.display = 'block'
+        }
     }
     stop() {
         clearInterval(this.interval)
